@@ -20,12 +20,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Azure/go-amqp"
-	"github.com/Azure/go-amqp/internal/testconn"
 	"github.com/Azure/go-autorest/autorest"
 	"github.com/Azure/go-autorest/autorest/adal"
 	"github.com/Azure/go-autorest/autorest/azure"
 	"github.com/fortytw2/leaktest"
+	"github.com/princjef/go-amqp"
+	"github.com/princjef/go-amqp/internal/testconn"
 
 	"github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub"
 	"github.com/Azure/azure-sdk-for-go/services/servicebus/mgmt/2017-04-01/servicebus"
