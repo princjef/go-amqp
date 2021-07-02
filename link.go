@@ -521,14 +521,13 @@ func (l *link) muxReceive(fr performTransfer) error {
 	var closed bool
 	select {
 	case l.messages <- l.msg:
-		// Sent. No-op
+		// Sent
+		debug(1, "deliveryID %d after push to receiver - deliveryCount : %d - linkCredit: %d, len(messages): %d, len(inflight): %d", l.msg.deliveryID, l.deliveryCount, l.linkCredit, len(l.messages), len(l.receiver.inFlight.m))
 	case <-l.close:
 		// Link was closed
 		debug(1, "deliveryID %d skipping push to receiver - deliveryCount : %d - linkCredit: %d, len(messages): %d, len(inflight): %d", l.msg.deliveryID, l.deliveryCount, l.linkCredit, len(l.messages), len(l.receiver.inFlight.m))
 		closed = true
 	}
-
-	debug(1, "deliveryID %d after push to receiver - deliveryCount : %d - linkCredit: %d, len(messages): %d, len(inflight): %d", l.msg.deliveryID, l.deliveryCount, l.linkCredit, len(l.messages), len(l.receiver.inFlight.m))
 
 	// reset progress
 	l.buf.reset()
